@@ -10,10 +10,17 @@ namespace Tests.Models
     [TestFixture]
     public class SessaoTest
     {
+        private Sessao sessao;
+
+        [SetUp]
+        public void inicializa()
+        {
+            sessao = new Sessao();
+        }
+
         [Test]
         public void DeveVender1IngressoSeHa2Vagas()
         {
-            Sessao sessao = new Sessao();
             sessao.TotalDeIngressos = 2;
 
             Assert.IsTrue(sessao.PodeReservar(1));
@@ -22,7 +29,6 @@ namespace Tests.Models
         [Test]
         public void NaodeveVender3IngressoSeHa2Vagas()
         {
-            Sessao sessao = new Sessao();
             sessao.TotalDeIngressos = 2;
 
             Assert.IsFalse(sessao.PodeReservar(3));
@@ -31,7 +37,6 @@ namespace Tests.Models
         [Test]
         public void ReservarIngressosDeveDiminuirONumeroDeIngressosDisponiveis()
         {
-            Sessao sessao = new Sessao();
             sessao.TotalDeIngressos = 5;
 
             sessao.Reserva(3);
@@ -42,10 +47,9 @@ namespace Tests.Models
         {
             int quantidade = 1;
 
-            Sessao objSessao = new Sessao();
-            objSessao.TotalDeIngressos = 10;
-            objSessao.IngressosReservados = 9;
-            bool resultado = objSessao.PodeReservar(quantidade);
+            sessao.TotalDeIngressos = 10;
+            sessao.IngressosReservados = 9;
+            bool resultado = sessao.PodeReservar(quantidade);
 
             Assert.IsTrue(resultado);
         }
@@ -53,9 +57,8 @@ namespace Tests.Models
         [Test]
         public void DeveReservarQuantidadeDesejadaComCemDeNoventa()
         {
-            Sessao objSessao = new Sessao();
-            objSessao.TotalDeIngressos = 90;
-            Assert.IsFalse(objSessao.PodeReservar(100));
+            sessao.TotalDeIngressos = 90;
+            Assert.IsFalse(sessao.PodeReservar(100));
         }
     }
 }
