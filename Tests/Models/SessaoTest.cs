@@ -37,5 +37,17 @@ namespace Tests.Models
             sessao.Reserva(3);
             Assert.AreEqual(2, sessao.IngressosDisponiveis);
         }
+        [Test]
+        public void DeveReservarQuantidadeDesejada()
+        {
+            int quantidade = 1;
+
+            Sessao objSessao = new Sessao();
+            objSessao.TotalDeIngressos = 10;
+            objSessao.IngressosReservados = 9;
+            bool resultado = objSessao.PodeReservar(quantidade);
+
+            Assert.IsTrue(resultado);
+        }
     }
 }

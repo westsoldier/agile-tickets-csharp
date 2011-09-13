@@ -47,7 +47,6 @@
     <Compile Include="Models\SessaoTest.cs" />
     <Compile Include="PrimeiroTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SessaoTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
