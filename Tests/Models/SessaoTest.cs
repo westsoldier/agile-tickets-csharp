@@ -49,5 +49,13 @@ namespace Tests.Models
 
             Assert.IsTrue(resultado);
         }
+
+        [Test]
+        public void DeveReservarQuantidadeDesejadaComCemDeNoventa()
+        {
+            Sessao objSessao = new Sessao();
+            objSessao.TotalDeIngressos = 90;
+            Assert.IsFalse(objSessao.PodeReservar(100));
+        }
     }
 }
